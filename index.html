@@ -1,0 +1,1543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ernestine Joy A. Bataller — Development Communication Professional</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            burgundy: '#580F23',
+            'burgundy-deep': '#3D0817',
+            'burgundy-light': '#7A1A34',
+            cream: '#FDFBF7',
+            charcoal: '#1F1F1F',
+            'warm-gray': '#E8E4DE',
+          },
+          fontFamily: {
+            serif: ['"Playfair Display"', 'serif'],
+            'serif-alt': ['"Cormorant Garamond"', 'serif'],
+            sans: ['"Montserrat"', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --burgundy: #580F23;
+      --burgundy-deep: #3D0817;
+      --cream: #FDFBF7;
+      --white: #FFFFFF;
+      --charcoal: #1F1F1F;
+      --warm-gray: #E8E4DE;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--cream);
+      color: var(--charcoal);
+      overflow-x: hidden;
+    }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--cream); }
+    ::-webkit-scrollbar-thumb { background: var(--burgundy); }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(253,251,247,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(88,15,35,0.12);
+    }
+    .nav-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 3rem;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--burgundy);
+      text-transform: uppercase;
+    }
+    .nav-logo span {
+      font-style: italic;
+      font-weight: 400;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      text-decoration: none;
+      position: relative;
+      padding-bottom: 4px;
+      transition: color 0.3s;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 1px;
+      background: var(--burgundy);
+      transition: width 0.3s ease;
+    }
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--burgundy); }
+    .nav-links a:hover::after,
+    .nav-links a.active::after { width: 100%; }
+
+    /* ── HAMBURGER (mobile) ── */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px; height: 1.5px;
+      background: var(--burgundy);
+      transition: all 0.3s;
+    }
+    @media (max-width: 768px) {
+      .hamburger { display: flex; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 72px; left: 0; right: 0;
+        flex-direction: column;
+        gap: 0;
+        background: var(--cream);
+        border-bottom: 1px solid rgba(88,15,35,0.12);
+        padding: 1rem 0;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a {
+        display: block;
+        padding: 0.75rem 3rem;
+      }
+    }
+
+    /* ── SECTIONS ── */
+    section { display: none; min-height: 100vh; }
+    section.active { display: block; }
+
+    /* ── WATERMARK TEXT ── */
+    .watermark {
+      position: absolute;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(6rem, 18vw, 18rem);
+      font-weight: 900;
+      color: rgba(88,15,35,0.05);
+      letter-spacing: -0.02em;
+      pointer-events: none;
+      user-select: none;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    /* ── HERO SECTION ── */
+    #home {
+      background: var(--cream);
+      padding-top: 72px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-wrapper {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 5rem 3rem 4rem;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 4rem;
+      align-items: center;
+      min-height: calc(100vh - 72px);
+      position: relative;
+    }
+    .hero-watermark {
+      top: 50%;
+      left: -2rem;
+      transform: translateY(-50%);
+    }
+    .hero-label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--burgundy);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .hero-label::before {
+      content: '';
+      display: block;
+      width: 40px; height: 1px;
+      background: var(--burgundy);
+    }
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 6vw, 6.5rem);
+      font-weight: 900;
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      color: var(--charcoal);
+      margin-bottom: 2rem;
+    }
+    .hero-name em {
+      font-style: italic;
+      color: var(--burgundy);
+      display: block;
+    }
+    .hero-tagline {
+      font-size: clamp(0.85rem, 1.2vw, 1rem);
+      font-weight: 300;
+      line-height: 1.8;
+      color: #555;
+      max-width: 520px;
+      margin-bottom: 3rem;
+      letter-spacing: 0.02em;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: var(--burgundy);
+      color: white;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 1rem 2.5rem;
+      border: 1px solid var(--burgundy);
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.3s;
+    }
+    .btn-primary:hover {
+      background: transparent;
+      color: var(--burgundy);
+    }
+    .btn-ghost {
+      background: transparent;
+      color: var(--charcoal);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 1rem 2.5rem;
+      border: 1px solid var(--charcoal);
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.3s;
+    }
+    .btn-ghost:hover {
+      background: var(--charcoal);
+      color: white;
+    }
+
+    /* portrait circle */
+    .portrait-frame {
+      width: clamp(260px, 28vw, 420px);
+      height: clamp(260px, 28vw, 420px);
+      border-radius: 50%;
+      border: 2px solid var(--burgundy);
+      position: relative;
+      flex-shrink: 0;
+    }
+    .portrait-inner {
+      position: absolute;
+      inset: 12px;
+      border-radius: 50%;
+      background: var(--warm-gray);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .portrait-placeholder {
+      width: 100%; height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #e8ddd5 0%, #d4c5bc 100%);
+    }
+    .portrait-placeholder svg {
+      width: 40%;
+      opacity: 0.4;
+    }
+    .portrait-accent {
+      position: absolute;
+      bottom: -16px; right: -16px;
+      width: 80px; height: 80px;
+      background: var(--burgundy);
+      border-radius: 50%;
+      z-index: -1;
+    }
+    .portrait-badge {
+      position: absolute;
+      bottom: 20px; left: -20px;
+      background: var(--burgundy);
+      color: white;
+      padding: 0.75rem 1.25rem;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 3rem;
+      margin-top: 4rem;
+      padding-top: 3rem;
+      border-top: 1px solid rgba(88,15,35,0.15);
+    }
+    .stat-item {}
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: var(--burgundy);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #888;
+      margin-top: 0.25rem;
+    }
+
+    /* ── ABOUT SECTION ── */
+    #about {
+      background: var(--cream);
+      padding-top: 72px;
+      overflow: hidden;
+    }
+    .about-header {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 4rem 3rem 0;
+    }
+    .section-label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--burgundy);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 40px; height: 1px;
+      background: var(--burgundy);
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 5vw, 5rem);
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      color: var(--charcoal);
+    }
+    .section-title em {
+      font-style: italic;
+      color: var(--burgundy);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 80vh;
+      margin-top: 4rem;
+    }
+    .about-burgundy {
+      background: var(--burgundy);
+      padding: 5rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .about-burgundy .watermark {
+      color: rgba(255,255,255,0.05);
+      bottom: -2rem;
+      right: -2rem;
+      font-size: 12rem;
+    }
+    .about-white {
+      background: white;
+      padding: 5rem 4rem;
+      position: relative;
+    }
+    .about-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 2rem;
+      line-height: 1.3;
+    }
+    .about-body {
+      font-size: 0.875rem;
+      line-height: 2;
+      color: rgba(255,255,255,0.82);
+      font-weight: 300;
+    }
+    .about-body p + p { margin-top: 1.25rem; }
+    .about-body strong { color: white; font-weight: 600; }
+
+    .education-card {
+      border-left: 2px solid var(--burgundy);
+      padding-left: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .edu-school {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      margin-bottom: 0.25rem;
+    }
+    .edu-degree {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--burgundy);
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+    }
+    .edu-detail {
+      font-size: 0.78rem;
+      color: #777;
+      line-height: 1.7;
+    }
+    .honor-pill {
+      display: inline-block;
+      background: var(--burgundy);
+      color: white;
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.75rem;
+      margin-top: 0.5rem;
+      margin-right: 0.4rem;
+    }
+    .philosophy-pull {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-style: italic;
+      font-weight: 400;
+      color: var(--charcoal);
+      line-height: 1.6;
+      border-left: 3px solid var(--burgundy);
+      padding-left: 1.5rem;
+      margin: 2rem 0;
+    }
+    .coursework-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    .course-tag {
+      border: 1px solid rgba(88,15,35,0.25);
+      color: var(--burgundy);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.75rem;
+    }
+
+    /* ── EXPERIENCE SECTION ── */
+    #experience {
+      background: var(--cream);
+      padding-top: 72px;
+      position: relative;
+      overflow: hidden;
+    }
+    .experience-wrapper {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 5rem 3rem;
+      position: relative;
+    }
+    .exp-grid {
+      margin-top: 5rem;
+    }
+    .exp-item {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 3rem;
+      padding: 3.5rem 0;
+      border-bottom: 1px solid rgba(88,15,35,0.12);
+      position: relative;
+      transition: all 0.3s;
+    }
+    .exp-item:last-child { border-bottom: none; }
+    .exp-item:hover .exp-numeral { color: var(--burgundy); }
+    .exp-numeral {
+      font-family: 'Playfair Display', serif;
+      font-size: 5rem;
+      font-weight: 900;
+      color: rgba(88,15,35,0.12);
+      line-height: 1;
+      transition: color 0.4s;
+      letter-spacing: -0.04em;
+    }
+    .exp-content {}
+    .exp-role-label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--burgundy);
+      margin-bottom: 0.5rem;
+    }
+    .exp-role {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      margin-bottom: 0.25rem;
+      line-height: 1.25;
+    }
+    .exp-org {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--burgundy);
+      letter-spacing: 0.08em;
+      margin-bottom: 0.25rem;
+    }
+    .exp-date {
+      font-size: 0.72rem;
+      color: #999;
+      letter-spacing: 0.1em;
+      margin-bottom: 1.5rem;
+    }
+    .exp-bullets {
+      list-style: none;
+    }
+    .exp-bullets li {
+      font-size: 0.85rem;
+      line-height: 1.8;
+      color: #555;
+      padding-left: 1.25rem;
+      position: relative;
+      margin-bottom: 0.5rem;
+    }
+    .exp-bullets li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--burgundy);
+      font-weight: 300;
+    }
+    .leadership-block {
+      background: var(--burgundy);
+      margin-top: 5rem;
+      padding: 5rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .leadership-block .watermark {
+      color: rgba(255,255,255,0.04);
+      top: 50%;
+      right: -2rem;
+      transform: translateY(-50%);
+      font-size: 14rem;
+    }
+    .leadership-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 900;
+      color: white;
+      margin-bottom: 3rem;
+    }
+    .leadership-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+    .leader-card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      padding: 2rem;
+      transition: background 0.3s;
+    }
+    .leader-card:hover {
+      background: rgba(255,255,255,0.14);
+    }
+    .leader-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 1rem;
+    }
+    .leader-role {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 0.25rem;
+    }
+    .leader-org {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .leader-desc {
+      font-size: 0.82rem;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.75);
+      font-weight: 300;
+    }
+
+    /* ── PORTFOLIO SECTION ── */
+    #portfolio {
+      background: white;
+      padding-top: 72px;
+      position: relative;
+      overflow: hidden;
+    }
+    .portfolio-wrapper {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 5rem 3rem;
+      position: relative;
+    }
+    .portfolio-intro {
+      max-width: 600px;
+      margin-bottom: 5rem;
+    }
+    .portfolio-intro p {
+      font-size: 0.875rem;
+      line-height: 1.9;
+      color: #666;
+      margin-top: 1.5rem;
+    }
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5px;
+    }
+    .port-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 520px;
+      background: var(--cream);
+      display: flex;
+      flex-direction: column;
+      padding: 3rem 2.5rem;
+      border: 1px solid rgba(88,15,35,0.08);
+      transition: all 0.4s ease;
+      cursor: default;
+    }
+    .port-card:hover {
+      border-color: var(--burgundy);
+    }
+    .port-card:hover .port-cover-bar {
+      width: 100%;
+    }
+    .port-card-dark {
+      background: var(--burgundy);
+    }
+    .port-cover-bar {
+      position: absolute;
+      top: 0; left: 0;
+      height: 3px;
+      width: 0;
+      background: var(--burgundy);
+      transition: width 0.5s ease;
+    }
+    .port-card-dark .port-cover-bar {
+      background: rgba(255,255,255,0.5);
+      width: 40%;
+    }
+    .port-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 5rem;
+      font-weight: 900;
+      line-height: 1;
+      color: rgba(88,15,35,0.1);
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.03em;
+    }
+    .port-card-dark .port-num {
+      color: rgba(255,255,255,0.12);
+    }
+    .port-category {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--burgundy);
+      margin-bottom: 1rem;
+    }
+    .port-card-dark .port-category {
+      color: rgba(255,255,255,0.5);
+    }
+    .port-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      line-height: 1.3;
+      margin-bottom: 1.25rem;
+    }
+    .port-card-dark .port-title {
+      color: white;
+    }
+    .port-desc {
+      font-size: 0.8rem;
+      line-height: 1.85;
+      color: #666;
+      font-weight: 300;
+      flex-grow: 1;
+    }
+    .port-card-dark .port-desc {
+      color: rgba(255,255,255,0.7);
+    }
+    .port-highlights {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .port-highlight-item {
+      font-size: 0.72rem;
+      color: #888;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+    .port-card-dark .port-highlight-item {
+      color: rgba(255,255,255,0.55);
+    }
+    .port-highlight-item::before {
+      content: '·';
+      color: var(--burgundy);
+      font-size: 1rem;
+      line-height: 1.2;
+      flex-shrink: 0;
+    }
+    .port-card-dark .port-highlight-item::before {
+      color: rgba(255,255,255,0.4);
+    }
+    .port-footer {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(88,15,35,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .port-card-dark .port-footer {
+      border-top-color: rgba(255,255,255,0.15);
+    }
+    .port-tag {
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--burgundy);
+      border: 1px solid rgba(88,15,35,0.25);
+      padding: 0.25rem 0.6rem;
+    }
+    .port-card-dark .port-tag {
+      color: rgba(255,255,255,0.6);
+      border-color: rgba(255,255,255,0.2);
+    }
+    .port-arrow {
+      width: 32px; height: 32px;
+      border: 1px solid rgba(88,15,35,0.25);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .port-card-dark .port-arrow {
+      border-color: rgba(255,255,255,0.25);
+    }
+    .port-arrow svg {
+      width: 12px; height: 12px;
+      stroke: var(--burgundy);
+    }
+    .port-card-dark .port-arrow svg {
+      stroke: white;
+    }
+
+    /* Achievements banner */
+    .achievements-banner {
+      background: var(--charcoal);
+      padding: 4rem 3rem;
+      margin: 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .achievements-banner .watermark {
+      color: rgba(255,255,255,0.03);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+    }
+    .ach-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .ach-label {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-style: italic;
+      color: rgba(255,255,255,0.4);
+      writing-mode: vertical-lr;
+      text-orientation: mixed;
+      transform: rotate(180deg);
+      letter-spacing: 0.1em;
+    }
+    .ach-awards {
+      display: flex;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+    .ach-item {
+      flex: 1;
+      min-width: 200px;
+    }
+    .ach-icon {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: rgba(88,15,35,0.6);
+      margin-bottom: 0.75rem;
+    }
+    .ach-award-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 0.25rem;
+    }
+    .ach-event {
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.45);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* ── CONTACT SECTION ── */
+    #contact {
+      background: var(--cream);
+      padding-top: 72px;
+      position: relative;
+      overflow: hidden;
+    }
+    .contact-wrapper {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 5rem 3rem;
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      margin-top: 4rem;
+    }
+    .contact-left {}
+    .contact-intro {
+      font-size: 0.875rem;
+      line-height: 2;
+      color: #666;
+      margin-bottom: 3rem;
+      max-width: 460px;
+    }
+    .contact-detail {
+      margin-bottom: 2rem;
+    }
+    .contact-detail-label {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--burgundy);
+      margin-bottom: 0.5rem;
+    }
+    .contact-detail-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--charcoal);
+    }
+    .contact-detail-value a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(88,15,35,0.25);
+      transition: color 0.3s, border-color 0.3s;
+    }
+    .contact-detail-value a:hover {
+      color: var(--burgundy);
+      border-color: var(--burgundy);
+    }
+
+    .contact-right {
+      background: var(--burgundy);
+      padding: 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .contact-right .watermark {
+      color: rgba(255,255,255,0.04);
+      bottom: -2rem; right: -2rem;
+      font-size: 10rem;
+    }
+    .contact-cta-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.25rem;
+      font-weight: 900;
+      color: white;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+    .contact-cta-heading em { font-style: italic; }
+    .contact-cta-text {
+      font-size: 0.82rem;
+      line-height: 1.9;
+      color: rgba(255,255,255,0.72);
+      margin-bottom: 2.5rem;
+    }
+    .contact-email-big {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: white;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.3);
+      padding: 1rem 1.5rem;
+      position: relative;
+      z-index: 1;
+      transition: all 0.3s;
+      letter-spacing: 0.05em;
+      word-break: break-all;
+    }
+    .contact-email-big:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(255,255,255,0.6);
+    }
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+    .social-link {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 0.5rem 1rem;
+      transition: all 0.3s;
+    }
+    .social-link:hover {
+      color: white;
+      border-color: white;
+    }
+
+    /* footer strip */
+    .footer-strip {
+      background: var(--charcoal);
+      padding: 1.5rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-strip p {
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      color: rgba(255,255,255,0.3);
+    }
+    .footer-strip span {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      color: rgba(88,15,35,0.7);
+    }
+
+    /* ── TRANSITIONS ── */
+    section {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.45s ease, transform 0.45s ease;
+    }
+    section.active {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    section.fade-in {
+      animation: fadeInSection 0.45s ease forwards;
+    }
+    @keyframes fadeInSection {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .hero-wrapper { grid-template-columns: 1fr; text-align: center; justify-items: center; }
+      .hero-label { justify-content: center; }
+      .hero-tagline { text-align: center; }
+      .about-grid { grid-template-columns: 1fr; }
+      .portfolio-grid { grid-template-columns: 1fr 1fr; }
+      .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .leadership-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .nav-inner { padding: 0 1.5rem; }
+      .hero-wrapper { padding: 3rem 1.5rem; }
+      .about-burgundy, .about-white { padding: 3rem 2rem; }
+      .experience-wrapper { padding: 3rem 1.5rem; }
+      .exp-item { grid-template-columns: 80px 1fr; gap: 1.5rem; }
+      .exp-numeral { font-size: 3rem; }
+      .portfolio-wrapper { padding: 3rem 1.5rem; }
+      .portfolio-grid { grid-template-columns: 1fr; }
+      .leadership-block { padding: 3rem 2rem; }
+      .achievements-banner { padding: 3rem 1.5rem; }
+      .ach-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .ach-label { writing-mode: horizontal-tb; transform: none; }
+      .contact-wrapper { padding: 3rem 1.5rem; }
+      .contact-right { padding: 2.5rem 2rem; }
+      .hero-stats { gap: 2rem; flex-wrap: wrap; }
+      .footer-strip { flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════════ NAV ═══════════════════════ -->
+  <nav>
+    <div class="nav-inner">
+      <div class="nav-logo">E.<span>Joy</span> Bataller</div>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#" class="active" data-section="home">Home</a></li>
+        <li><a href="#" data-section="about">About</a></li>
+        <li><a href="#" data-section="experience">Experience</a></li>
+        <li><a href="#" data-section="portfolio">Portfolio</a></li>
+        <li><a href="#" data-section="contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════ HOME ═══════════════════════ -->
+  <section id="home" class="active">
+    <div class="hero-wrapper">
+      <div class="watermark hero-watermark" aria-hidden="true">DevCom</div>
+
+      <div class="hero-left">
+        <div class="hero-label">Development Communication Professional</div>
+        <h1 class="hero-name">
+          Ernestine<br />
+          Joy<br />
+          <em>Bataller.</em>
+        </h1>
+        <p class="hero-tagline">
+          Bridging the gap between backend data operations, global marketing consulting, and high-caliber media communications — from the heart of Bicol, Philippines.
+        </p>
+        <div class="hero-actions">
+          <a href="#" class="btn-primary" data-section="portfolio">View Portfolio</a>
+          <a href="#" class="btn-ghost" data-section="contact">Get in Touch</a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-item">
+            <div class="stat-num">3+</div>
+            <div class="stat-label">Years Experience</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">3</div>
+            <div class="stat-label">Press Conf. Awards</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">4</div>
+            <div class="stat-label">Leadership Roles</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="portrait-frame">
+        <div class="portrait-inner">
+          <div class="portrait-placeholder">
+            <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="40" cy="30" r="16" fill="rgba(88,15,35,0.2)"/>
+              <path d="M10 72c0-16.569 13.431-30 30-30s30 13.431 30 30" fill="rgba(88,15,35,0.15)"/>
+            </svg>
+          </div>
+        </div>
+        <div class="portrait-accent"></div>
+        <div class="portrait-badge">DevCom · Media · PR</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ ABOUT ═══════════════════════ -->
+  <section id="about">
+    <div class="about-header">
+      <div class="section-label">The Story</div>
+      <h2 class="section-title">Who I <em>Am.</em></h2>
+    </div>
+
+    <div class="about-grid">
+      <!-- Left: Burgundy -->
+      <div class="about-burgundy">
+        <div class="watermark" aria-hidden="true">Story</div>
+        <h3 class="about-heading">A communicator who turns complexity into clarity.</h3>
+        <div class="about-body">
+          <p>
+            I am <strong>Ernestine Joy A. Bataller</strong>, a Development Communication professional based in Bicol, Philippines, with a distinctive ability to operate effectively across vastly different communication landscapes — from the structured rigor of international marketing consulting to the fast-paced pressures of primetime television production.
+          </p>
+          <p>
+            My academic foundation at <strong>Camarines Sur Polytechnic Colleges</strong> gave me a multidisciplinary lens: I was trained not only to craft compelling narratives but to understand the systems behind information flow, audience behavior, and institutional communication.
+          </p>
+          <p>
+            Whether I am auditing global audience metrics for a Canadian consulting firm, coordinating the logistics of a live drama production at <strong>GMA Network</strong>, or leading student governance at scale — I bring the same principle to every role: <em>communication must be purposeful, precise, and deeply human.</em>
+          </p>
+          <p>
+            My competitive edge lies in the intersection of strategic thinking and storytelling. I have stood on national stages as a <strong>Best News Anchor</strong> and <strong>Best Script</strong> awardee, demonstrating that craft, preparation, and authenticity are the pillars of impactful communication.
+          </p>
+        </div>
+      </div>
+
+      <!-- Right: White -->
+      <div class="about-white">
+        <blockquote class="philosophy-pull">
+          "Communication must be purposeful, precise, and deeply human — no matter the platform, the audience, or the stakes."
+        </blockquote>
+
+        <div style="margin-top: 2.5rem;">
+          <div class="section-label" style="margin-bottom: 1.5rem;">Education</div>
+          <div class="education-card">
+            <div class="edu-school">Camarines Sur Polytechnic Colleges</div>
+            <div class="edu-degree">B.S. in Development Communication</div>
+            <div class="edu-detail">
+              Expected Graduation: July 2026<br />
+              Bicol Region, Philippines
+            </div>
+            <div style="margin-top: 0.75rem;">
+              <span class="honor-pill">President's List</span>
+              <span class="honor-pill">Most Outstanding BS DevCom Student</span>
+            </div>
+          </div>
+
+          <div style="margin-top: 2rem;">
+            <div class="section-label" style="margin-bottom: 1rem;">Core Coursework</div>
+            <div class="coursework-tags">
+              <span class="course-tag">Technical Writing</span>
+              <span class="course-tag">Broadcast Journalism</span>
+              <span class="course-tag">Public Relations</span>
+              <span class="course-tag">Project Management</span>
+              <span class="course-tag">Multimedia Production</span>
+              <span class="course-tag">Development Communication</span>
+              <span class="course-tag">Media Studies</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid rgba(88,15,35,0.12);">
+          <div class="section-label" style="margin-bottom: 1rem;">Location &amp; Availability</div>
+          <p style="font-size: 0.82rem; line-height: 1.8; color: #666;">
+            Based in <strong style="color: var(--charcoal);">Bicol, Philippines</strong>. Currently available for remote consulting, freelance communications work, and part-time collaborative engagements globally.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ EXPERIENCE ═══════════════════════ -->
+  <section id="experience">
+    <div class="experience-wrapper">
+      <div class="watermark" aria-hidden="true" style="top:0; left:-2rem; font-size:clamp(6rem,14vw,14rem);">Career</div>
+      <div class="section-label">Professional Journey</div>
+      <h2 class="section-title">Experience &amp; <em>Leadership.</em></h2>
+
+      <div class="exp-grid">
+
+        <!-- 01 -->
+        <div class="exp-item">
+          <div class="exp-numeral">01.</div>
+          <div class="exp-content">
+            <div class="exp-role-label">Marketing · Consulting</div>
+            <div class="exp-role">Marketing Consultant</div>
+            <div class="exp-org">a2z Strategic Consulting — Quebec, Canada</div>
+            <div class="exp-date">Part-Time · Present</div>
+            <ul class="exp-bullets">
+              <li>Develop strategic communication materials that align global brand positioning with target audience expectations across diverse North American markets.</li>
+              <li>Audit and analyze audience engagement metrics, translating complex data outputs into actionable recommendations for senior stakeholders.</li>
+              <li>Coordinate cross-functional remote teams distributed across multiple time zones, maintaining seamless workflow continuity and deadline adherence.</li>
+              <li>Produce campaign frameworks that integrate qualitative audience insights with quantitative performance benchmarks for client deliverables.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 02 -->
+        <div class="exp-item">
+          <div class="exp-numeral">02.</div>
+          <div class="exp-content">
+            <div class="exp-role-label">Production · Administration · Media</div>
+            <div class="exp-role">Production &amp; Administrative Coordinator</div>
+            <div class="exp-org">GMA Network Inc. / GMA Entertainment Group — Philippines</div>
+            <div class="exp-date">Internship · July 2025 – August 2025</div>
+            <ul class="exp-bullets">
+              <li>Streamlined physical and digital filing workflows for legal contracts and production documents, significantly reducing retrieval time across the Drama Department.</li>
+              <li>Facilitated multi-departmental project tracking systems that consolidated scheduling, contract compliance, and script revision cycles into unified operational dashboards.</li>
+              <li>Coordinated high-pressure primetime drama studio logistics, supporting directors, talent teams, and production crews under live broadcast conditions.</li>
+              <li>Provided real-time administrative support during critical production milestones, ensuring zero lapses in documentation and institutional communication.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 03 -->
+        <div class="exp-item">
+          <div class="exp-numeral">03.</div>
+          <div class="exp-content">
+            <div class="exp-role-label">Broadcast Journalism · Radio</div>
+            <div class="exp-role">English Radio Broadcaster, Scriptwriter &amp; News Anchor</div>
+            <div class="exp-org">CSPC — Department of Education Press Conferences</div>
+            <div class="exp-date">Competition Circuit · 2022 – 2025</div>
+            <ul class="exp-bullets">
+              <li>Delivered broadcast-quality English news anchor performances across DSPC, RSPC, and National Schools Press Conference (NSPC) arenas, earning recognition at every competitive level.</li>
+              <li>Authored award-winning broadcast scripts that balanced journalistic integrity with compelling narrative structure for live radio delivery.</li>
+              <li>Competed and won <strong>Best News Anchor</strong> and <strong>Best Script</strong> distinctions at national-level competitions, representing the college with distinction.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Leadership block -->
+    <div class="leadership-block">
+      <div class="watermark" aria-hidden="true">Lead</div>
+      <div style="max-width: 1400px; margin: 0 auto; position: relative; z-index: 1;">
+        <div class="section-label" style="color: rgba(255,255,255,0.5);">
+          <span style="display:flex; align-items:center; gap: 1rem;">
+            <span style="display:block; width:40px; height:1px; background: rgba(255,255,255,0.3);"></span>
+            Governance &amp; Student Leadership
+          </span>
+        </div>
+        <h3 class="leadership-title">Leadership <em style="font-style:italic;">Anchors.</em></h3>
+        <div class="leadership-grid">
+          <div class="leader-card">
+            <div class="leader-num">01. Governor</div>
+            <div class="leader-role">Governor, College of Arts and Sciences</div>
+            <div class="leader-org">CSPC · August 2025 – Present</div>
+            <div class="leader-desc">
+              Directing college-wide governance initiatives for one of the institution's largest academic colleges. Consolidate multi-stakeholder feedback into comprehensive situational reports submitted to institutional leadership. Champion student welfare policies and ensure equitable representation in administrative decision-making processes.
+            </div>
+          </div>
+          <div class="leader-card">
+            <div class="leader-num">02. PR Director</div>
+            <div class="leader-role">Public Relations Committee Director</div>
+            <div class="leader-org">CSPC Supreme Student Council · August 2022 – July 2023</div>
+            <div class="leader-desc">
+              Managed the institution's official communication channels as the primary student government voice, synchronizing timely and accurate updates across all platforms. Led and executed large-scale student engagement campaigns that strengthened community cohesion and increased institutional transparency for the entire student body.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ PORTFOLIO ═══════════════════════ -->
+  <section id="portfolio">
+    <div class="portfolio-wrapper">
+      <div class="watermark" aria-hidden="true" style="top: 3rem; right: -2rem; font-size: clamp(5rem, 12vw, 12rem);">Work</div>
+
+      <div class="portfolio-intro">
+        <div class="section-label">Selected Work</div>
+        <h2 class="section-title">The <em>Portfolio.</em></h2>
+        <p>
+          A curated collection of strategic, editorial, and broadcast communication work spanning international consulting, primetime entertainment production, and national-level journalism — each discipline reinforcing the other in a cohesive professional identity.
+        </p>
+      </div>
+
+      <div class="portfolio-grid">
+
+        <!-- Card 01 -->
+        <div class="port-card">
+          <div class="port-cover-bar"></div>
+          <div class="port-num">01</div>
+          <div class="port-category">Strategic Marketing &amp; Client Relations</div>
+          <div class="port-title">Global Campaign Frameworks &amp; Audience Intelligence</div>
+          <div class="port-desc">
+            Developed and executed strategic communication materials during engagements at a2z Strategic Consulting, a Quebec-based firm with a diversified international client portfolio. Work spans campaign architecture, narrative positioning, and performance reporting frameworks designed for North American audiences.
+          </div>
+          <div class="port-highlights">
+            <div class="port-highlight-item">Cross-cultural audience segmentation and persona mapping for multi-market campaigns</div>
+            <div class="port-highlight-item">Metric audit reports translating platform analytics into executive-level insights</div>
+            <div class="port-highlight-item">Strategic content calendars aligned with client brand guidelines and campaign KPIs</div>
+            <div class="port-highlight-item">Remote team coordination across time zones with documented workflow protocols</div>
+          </div>
+          <div class="port-footer">
+            <span class="port-tag">Consulting</span>
+            <div class="port-arrow">
+              <svg viewBox="0 0 12 12" fill="none" stroke-width="1.5"><path d="M2 6h8M6 2l4 4-4 4"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 02: Dark -->
+        <div class="port-card port-card-dark">
+          <div class="port-cover-bar"></div>
+          <div class="port-num">02</div>
+          <div class="port-category">Media Coordination &amp; Entertainment Logistics</div>
+          <div class="port-title">Production Systems Inside GMA Drama Department</div>
+          <div class="port-desc">
+            Administrative and production infrastructure built during the GMA Network internship within one of the Philippines' most-watched primetime drama pipelines. Encompasses contract document management, multi-departmental project dashboards, and real-time studio operations coordination.
+          </div>
+          <div class="port-highlights">
+            <div class="port-highlight-item">Legal contract filing system redesign — physical and digital dual-archive protocol</div>
+            <div class="port-highlight-item">Script compliance tracking matrices used across the Drama Department production cycle</div>
+            <div class="port-highlight-item">Production schedule coordination for primetime broadcast — zero-error delivery standard</div>
+            <div class="port-highlight-item">Multi-department project tracking blueprints integrating talent, legal, and production inputs</div>
+          </div>
+          <div class="port-footer">
+            <span class="port-tag">Broadcasting</span>
+            <div class="port-arrow">
+              <svg viewBox="0 0 12 12" fill="none" stroke-width="1.5"><path d="M2 6h8M6 2l4 4-4 4"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 03 -->
+        <div class="port-card">
+          <div class="port-cover-bar"></div>
+          <div class="port-num">03</div>
+          <div class="port-category">Broadcast Journalism &amp; Public Relations</div>
+          <div class="port-title">Award-Winning Journalism Across National Press Stages</div>
+          <div class="port-desc">
+            A body of broadcast journalism work recognized at three progressive competition tiers — Division Schools Press Conference (DSPC), Regional Schools Press Conference (RSPC), and the National Schools Press Conference (NSPC) — demonstrating consistent excellence in live news anchoring, scriptwriting, and English radio broadcasting.
+          </div>
+          <div class="port-highlights">
+            <div class="port-highlight-item">Best News Anchor — National Schools Press Conference (NSPC)</div>
+            <div class="port-highlight-item">Best Script — National Schools Press Conference (NSPC)</div>
+            <div class="port-highlight-item">Recognized at DSPC and RSPC levels preceding national recognition</div>
+            <div class="port-highlight-item">English Radio Broadcasting performances across competitive regional and national arenas</div>
+          </div>
+          <div class="port-footer">
+            <span class="port-tag">Journalism</span>
+            <div class="port-arrow">
+              <svg viewBox="0 0 12 12" fill="none" stroke-width="1.5"><path d="M2 6h8M6 2l4 4-4 4"/></svg>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Achievements banner -->
+    <div class="achievements-banner">
+      <div class="watermark" aria-hidden="true">Awards</div>
+      <div class="ach-inner">
+        <div class="ach-label">Recognition</div>
+        <div class="ach-awards">
+          <div class="ach-item">
+            <div class="ach-icon">★</div>
+            <div class="ach-award-name">Best News Anchor</div>
+            <div class="ach-event">National Schools Press Conference (NSPC)</div>
+          </div>
+          <div class="ach-item">
+            <div class="ach-icon">★</div>
+            <div class="ach-award-name">Best Script</div>
+            <div class="ach-event">National Schools Press Conference (NSPC)</div>
+          </div>
+          <div class="ach-item">
+            <div class="ach-icon">★</div>
+            <div class="ach-award-name">President's List</div>
+            <div class="ach-event">Camarines Sur Polytechnic Colleges</div>
+          </div>
+          <div class="ach-item">
+            <div class="ach-icon">★</div>
+            <div class="ach-award-name">Most Outstanding BS DevCom Student</div>
+            <div class="ach-event">Camarines Sur Polytechnic Colleges</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ CONTACT ═══════════════════════ -->
+  <section id="contact">
+    <div class="contact-wrapper">
+      <div class="watermark" aria-hidden="true" style="top: 3rem; left: -2rem; font-size: clamp(5rem, 12vw, 12rem);">Hello</div>
+
+      <div class="section-label">Get In Touch</div>
+      <h2 class="section-title">Let's <em>Connect.</em></h2>
+
+      <div class="contact-grid">
+        <!-- Left -->
+        <div class="contact-left">
+          <p class="contact-intro">
+            I am open to opportunities in strategic communications consulting, media production coordination, public relations management, and broadcast journalism. Whether you are building a team, launching a campaign, or seeking a skilled communicator with national-level credentials — I welcome the conversation.
+          </p>
+
+          <div class="contact-detail">
+            <div class="contact-detail-label">Email Address</div>
+            <div class="contact-detail-value">
+              <a href="mailto:ernestinejoybat@gmail.com">ernestinejoybat@gmail.com</a>
+            </div>
+          </div>
+
+          <div class="contact-detail">
+            <div class="contact-detail-label">Phone / Mobile</div>
+            <div class="contact-detail-value">
+              <a href="tel:+639206574057">+63 920 657 4057</a>
+            </div>
+          </div>
+
+          <div class="contact-detail">
+            <div class="contact-detail-label">Location</div>
+            <div class="contact-detail-value">Bicol, Philippines</div>
+          </div>
+
+          <div class="contact-detail">
+            <div class="contact-detail-label">Availability</div>
+            <div class="contact-detail-value" style="font-size: 0.95rem;">
+              Remote · Part-Time · Freelance · Open to Discuss
+            </div>
+          </div>
+        </div>
+
+        <!-- Right -->
+        <div class="contact-right">
+          <div class="watermark" aria-hidden="true">Talk</div>
+          <h3 class="contact-cta-heading">Ready to start a<br /><em>conversation?</em></h3>
+          <p class="contact-cta-text">
+            Whether it is a consulting inquiry, media collaboration, or a creative project that demands both strategic thinking and strong storytelling — reach out directly. I respond promptly and thoughtfully to every inquiry.
+          </p>
+          <a href="mailto:ernestinejoybat@gmail.com" class="contact-email-big">
+            ernestinejoybat@gmail.com
+          </a>
+          <div class="social-links">
+            <a href="mailto:ernestinejoybat@gmail.com" class="social-link">Email</a>
+            <a href="tel:+639206574057" class="social-link">Call</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-strip">
+      <p>© 2025 <span>Ernestine Joy A. Bataller</span> · All rights reserved.</p>
+      <p>Development Communication · Media · Consulting · <span>Bicol, Philippines</span></p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ SCRIPTS ═══════════════════════ -->
+  <script>
+    // ── Section switching ──
+    const navLinks = document.querySelectorAll('[data-section]');
+    const sections = document.querySelectorAll('section');
+
+    function showSection(id) {
+      sections.forEach(s => {
+        s.classList.remove('active');
+        s.style.display = 'none';
+      });
+
+      const target = document.getElementById(id);
+      if (target) {
+        target.style.display = 'block';
+        // Trigger reflow for animation
+        target.offsetHeight;
+        target.classList.add('active', 'fade-in');
+        target.addEventListener('animationend', () => {
+          target.classList.remove('fade-in');
+        }, { once: true });
+      }
+
+      // Update nav active state
+      navLinks.forEach(a => {
+        if (a.dataset.section === id) {
+          a.classList.add('active');
+        } else {
+          a.classList.remove('active');
+        }
+      });
+
+      // Close mobile menu
+      document.getElementById('nav-links').classList.remove('open');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        showSection(link.dataset.section);
+      });
+    });
+
+    // ── Hamburger ──
+    document.getElementById('hamburger').addEventListener('click', () => {
+      document.getElementById('nav-links').classList.toggle('open');
+    });
+
+    // ── Init ──
+    showSection('home');
+  </script>
+</body>
+</html>
